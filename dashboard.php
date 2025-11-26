@@ -46,4 +46,4 @@ while ($row = mysqli_fetch_assoc($result)) {
 </table>
 
 <br>
-<a href="user-todo.php">ดู To-Do ของฉันเท่านั้น</a>
+<a href="user-own-todo.php">ดู To-Do ของฉันเท่านั้น</a>
