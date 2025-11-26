@@ -1,4 +1,4 @@
-<?php session_start()?>
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +18,7 @@
 
 </html>
 <?php
-    if($_SESSION['username'] != null && $_SESSION["user_id"] != null){
-        echo "<script>window.location='dashboard.php'</script>";
-    }
+if (isset($_SESSION['username']) && isset($_SESSION["user_id"])) {
+    echo "<script>window.location='dashboard.php'</script>";
+}
 ?>
