@@ -11,12 +11,15 @@ if (!isset($_SESSION["user_id"])) {
 <html lang="en">
 
 <head>
+    <!-- <meta http-equiv="refresh" content="3"> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
 <body>
+    <input type="text">
+    <!-- <iframe src="https://sanook.com" frameborder="0" width="300" height="100"></iframe> -->
     ยินดีต้อนรับคุณ <?php echo $_SESSION["username"]; ?><br>
     <a href="logout.php">ออกจากระบบ</a>
 
@@ -40,39 +43,7 @@ if (!isset($_SESSION["user_id"])) {
         <a href="add-todo.php">+ เพิ่ม To-Do ใหม่</a>
     </div>
 
-    <table border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <th>Assigned To</th>
-            <th>Task</th>
-            <th>Created At</th>
-        </tr>
-
-        <?php
-        $filter_by_user = $_GET["filter_by_user"];
-        $sql = "
-                SELECT todos.todo_text, todos.created_at, users.username
-                FROM todos
-                INNER JOIN users ON todos.user_id = users.id";
-
-        if(isset($filter_by_user)) {
-            $sql = $sql . " WHERE user_id = $filter_by_user";
-        }
-
-        $sql = $sql . " ORDER BY todos.id DESC";
-
-        $result = mysqli_query($db_connection, $sql);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-            <tr>
-                <td><?php echo $row['username']; ?></td>
-                <td><?php echo $row['todo_text']; ?></td>
-                <td><?php echo $row['created_at']; ?></td>
-            </tr>
-            <?php
-        }
-        ?>
-    </table>
+    <iframe src="list-todo.php" frameborder="0" width="1024" height="768"></iframe>
 
     <br>
     <a href="user-own-todo.php">ดู To-Do ของฉันเท่านั้น</a>
